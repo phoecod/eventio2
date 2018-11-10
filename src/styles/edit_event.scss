@@ -1,0 +1,27 @@
+.edit-form {
+    @extend .shadow;
+    @extend .colFlex;
+    width: $detailpanelwidth;
+    padding: $msize;
+    margin: $ssize;
+    background: white;
+}
+
+.edit-container {
+    margin: $msize 0;
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.edit-btn-container {
+    display: flex;
+    justify-content: space-between;
+    > * {
+        margin: 0 $msize ;
+    }
+}
+
+.del-btn {
+    @extend .btn;
+    background: $leavered;
+}

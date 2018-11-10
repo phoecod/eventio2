@@ -1,0 +1,33 @@
+.cr-btn {
+    @extend .btn;
+    width: 150px;
+    height: 40px;
+}
+
+.cl-btn {
+    @extend .btn;
+    width: 80px;
+    height: 40px;
+}
+
+.create-form-container {
+    @extend .colFlex;
+    width: 350px;
+    background: white;
+    padding: $msize;
+    > .title {
+        margin: $ssize 0;
+        text-align: center;
+    } 
+    > .subtitle {
+        margin: 0;
+        margin-bottom: $msize;
+        text-align: center;
+    }
+}
+
+.btn-container {
+    display: flex;
+    justify-content: space-between;
+    margin: $ssize 0;
+}

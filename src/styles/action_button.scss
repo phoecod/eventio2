@@ -1,0 +1,14 @@
+.btn-edit {
+    @extend .sbtn;
+    background: $lightgrey;
+}
+
+.btn-leave {
+    @extend .sbtn;
+    background: $leavered;
+}
+
+.btn-join {
+    @extend .sbtn;
+    background: $greenblue;
+}

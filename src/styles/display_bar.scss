@@ -1,0 +1,31 @@
+.param-container {
+    display: flex;
+    justify-content: space-evenly;
+    margin: 0 $ssize;
+    > * {
+        margin: 0 $xssize;
+        cursor: pointer;
+    }
+}
+
+.bar-container {
+    display: flex;
+    justify-content: space-between;
+    margin: $msize 0;
+}
+
+.icon {
+    margin: 0 $ssize;
+    cursor: pointer;
+}
+
+.selected-icon {
+    @extend .icon;
+    padding: $xssize;
+    color: white;
+    background: black;
+}
+
+.selected-filter {
+    font-weight: bolder;
+}

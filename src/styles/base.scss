@@ -1,0 +1,80 @@
+$xssize: 5px;
+$ssize: 10px;
+$msize: 20px;
+$lsize: 40px;
+
+$panelheight: 170px;
+$panelwidth: 300px;
+
+$attendeheight: 175px;
+$attendewidth:300px;
+$detailpanelwidth: 700px;
+
+$greenblue: #22D486;
+$darkgrey: #7f7e7e;
+$lightgrey: #D9DCE1;
+$darkblue: #323C46;
+$shadowgrey: #F9F9FB;
+$leavered: #FF4081;
+
+
+
+.colFlex {
+    display: flex;
+    flex-direction: column;
+}
+
+.rowFlex {
+    display: flex;
+    justify-content: center;
+}
+
+.input {
+    border: none;
+    border-bottom: 1px solid $lightgrey;
+    padding: 10px 0;
+    margin-bottom: $msize;
+}
+
+.input::placeholder {
+    color: darkgrey;
+    padding:  0 $ssize;
+}
+
+.btn {
+    width: 120px;
+    float:right;
+    height: 30px;
+    color: white;
+    background: $greenblue;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.sbtn {
+    @extend .btn;
+    width: 90px;
+    height: 25px;
+}
+
+.title {
+    color: $darkblue;
+}
+
+.subtitle {
+    color: $darkgrey;
+}
+
+
+#root {
+    background: $shadowgrey;
+    min-height: 95vh;
+}
+
+.shadow {
+    -webkit-box-shadow: 0px 3px 5px 0px rgba(171,169,171,1);
+    -moz-box-shadow: 0px 3px 5px 0px rgba(171,169,171,1);
+    box-shadow: 0px 3px 5px 0px rgba(171,169,171,1);
+}

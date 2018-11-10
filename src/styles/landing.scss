@@ -1,0 +1,19 @@
+.events-panel-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.events-row-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.content-container {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    min-height: 75vh;
+}
+

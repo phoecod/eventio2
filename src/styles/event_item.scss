@@ -1,0 +1,100 @@
+
+
+
+.event-panel {
+    width: $panelwidth;
+    height: $panelheight;
+    background: white;
+    margin: $xssize;
+    padding: $msize;
+    @extend .shadow;
+    >.action-container {
+        display: flex;
+        justify-content: space-between;
+        margin: 0;
+        margin-top:$msize;
+        padding: $ssize 0;
+    }
+    >.action-container >.users>* {
+        margin-right: $ssize;
+    }
+    >div>.title {
+        margin-bottom: 0px;
+        color: $darkblue;
+    }
+    >div>.description {
+        margin-bottom: $ssize;
+        color: $darkgrey;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    >div>.host {
+        color: $darkgrey;
+    }
+}
+
+.event-row {
+    height: 50px;
+    background: white;
+    display: flex;
+    justify-content: space-between;
+    padding: $xssize $msize;
+    margin: $ssize 0;
+    @extend .shadow;
+    >.action-container {
+        width: 200px;
+        margin: 0;
+        padding: 0 $xssize;
+        display: inline-block;
+        line-height: 40px;
+    }
+    >.action-container >.users>* {
+        margin-right: $ssize;
+    }
+    >.action-container>.users {
+        display: inline;
+    }
+    >div > * {
+        margin: $ssize 0;
+        font-size: 14px;
+    }
+    >div>.title {
+        width: 100px;
+        display: inline;
+        color: $darkblue;
+        order: 1;
+        color: $darkblue;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+    }
+    >div>.date {
+        order: 4;
+        color: $lightgrey;
+        width: 150px;
+    }
+    >div>.description {
+        margin-bottom: $ssize;
+        display: inline;
+        color: $darkgrey;
+        overflow: hidden;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        width: 100px;
+        order: 2;
+    }
+    >div>.host {
+        color: $darkgrey;
+        width: 80px;
+        order: 3;
+    }
+    > .clickable {
+        display: flex;
+        flex-wrap: nowrap;
+    }
+}
+
+.clickable {
+    cursor: pointer;
+}

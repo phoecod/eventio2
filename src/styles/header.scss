@@ -1,0 +1,33 @@
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    padding: $msize;
+    margin: $msize 0;
+    > * {
+        margin: $ssize 0;
+    }
+}
+
+.signoutSelect {
+    border: none;
+}
+.back-link {
+    cursor: pointer;
+}
+
+.circle {
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    margin: 0 $ssize;
+    line-height: 35px;
+    border-radius: 50%; /* the magic */
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    text-align: center;
+    color: $darkgrey;
+    font-size: 14px;
+    text-transform: uppercase;
+    font-weight: 400;
+    background: $lightgrey;
+}

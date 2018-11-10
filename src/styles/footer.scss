@@ -1,0 +1,17 @@
+.add-circle {
+    @extend .circle;
+    background: $greenblue;
+    cursor: pointer;
+    color: white;
+    font-weight: bolder;
+    font-size: 19px;
+    height: 45px;
+    width: 45px;
+    border: none;
+    margin: $msize;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: flex-end;
+}

@@ -1,0 +1,61 @@
+.signin-page-container {
+    @extend .rowFlex;
+    min-height: inherit;
+}
+
+.image {
+    width: 390px;
+}
+
+
+.center-container {
+    display: flex;
+    padding: $lsize;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.form-container {
+    @extend .rowFlex;
+    height: 100%;
+}
+
+.form {
+    @extend .colFlex;
+    justify-content: center;
+    height: 550px;
+    width: 350px;
+    padding: $msize;
+}
+.link {
+    text-decoration: none;
+    cursor: pointer;
+    color: $darkgrey;
+    margin: 0 $ssize;
+}
+
+.pre-link {
+    color: $lightgrey;
+}
+
+.link-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+.side-panel {
+    @extend .colFlex;
+    width: 100%;
+}
+
+.signin-subtitle {
+    color: $darkgrey;
+}
+
+.title-block {
+    margin: $lsize 0;
+    > * {
+        margin: 10px 0;
+    }
+}
