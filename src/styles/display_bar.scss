@@ -12,11 +12,7 @@
     display: flex;
     justify-content: space-between;
     margin: $msize 0;
-}
-
-.icon {
-    margin: 0 $ssize;
-    cursor: pointer;
+    padding: 0 $lsize;
 }
 
 .selected-icon {

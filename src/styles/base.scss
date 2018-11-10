@@ -3,8 +3,8 @@ $ssize: 10px;
 $msize: 20px;
 $lsize: 40px;
 
-$panelheight: 170px;
-$panelwidth: 300px;
+$panelheight: 160px;
+$panelwidth: 265px;
 
 $attendeheight: 175px;
 $attendewidth:300px;
@@ -17,7 +17,9 @@ $darkblue: #323C46;
 $shadowgrey: #F9F9FB;
 $leavered: #FF4081;
 
-
+.app-margin {
+    margin: 0 $msize;
+}
 
 .colFlex {
     display: flex;
@@ -77,4 +79,9 @@ $leavered: #FF4081;
     -webkit-box-shadow: 0px 3px 5px 0px rgba(171,169,171,1);
     -moz-box-shadow: 0px 3px 5px 0px rgba(171,169,171,1);
     box-shadow: 0px 3px 5px 0px rgba(171,169,171,1);
+}
+
+.icon {
+    margin: 0 $xssize;
+    cursor: pointer;
 }

@@ -1,7 +1,7 @@
 .header-container {
     display: flex;
     justify-content: space-between;
-    padding: $msize;
+    padding: 0 $msize;
     margin: $msize 0;
     > * {
         margin: $ssize 0;
@@ -30,4 +30,8 @@
     text-transform: uppercase;
     font-weight: 400;
     background: $lightgrey;
+}
+
+.back-link {
+    line-height: 36px;
 }

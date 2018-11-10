@@ -7,7 +7,7 @@ import Header from './Header';
 import Footer from './Footer';
 import DisplayBar from './DisplayBar';
 
-export const EventDisplay = class EventDisplay extends Component {
+export const EventLanding = class EventLanding extends Component {
     constructor (props) {
         super(props);
         this.state = {
@@ -34,7 +34,7 @@ export const EventDisplay = class EventDisplay extends Component {
     render() {
         const {panelView} = this.state
         return (
-            <div className="rowFlex">
+            <div className="app-margin">
                 <div className="colFlex">
                     <Header signOut={this.handleSignOut}/>
                     <DisplayBar
@@ -70,6 +70,6 @@ const mapStateToProps = (state) => ({
     events: state.events
 })
 
-const connectedAuth = RequireAuth(connect(mapStateToProps, mapDispatchToProps)(EventDisplay));
+const connected = connect(mapStateToProps, mapDispatchToProps)(EventLanding);
 
-export default connectedAuth;
+export default RequireAuth(connected);

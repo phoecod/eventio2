@@ -24,7 +24,10 @@
 .action-container {
     display: flex;
     justify-content: space-between;
-    margin: $ssize $msize;
+    padding: $ssize 0;
+    >span > .user-icon {
+        margin: 0 $ssize;
+    }
 }
 
 .head-container {

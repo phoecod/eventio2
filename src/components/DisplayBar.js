@@ -47,8 +47,12 @@ const DisplayBar = class DisplayBar extends Component {
                     <a className={this.state.futureEvent ? "" : this.state.allEvent ? "" : "selected-filter" }onClick={() => this.fetchPastEvent()}>Past Events</a>
                 </div>
                 <div>
-                    <a className={this.props.panelView ? "selected-icon" : "icon" } onClick={() => this.props.panel()} ><FontAwesomeIcon icon="th-large"/></a>
-                    <a className={this.props.panelView ? "icon" : "selected-icon"} onClick={() => this.props.row()}><FontAwesomeIcon icon="th-list"/></a>
+                    <a className={this.props.panelView ? "selected-icon" : "icon" } 
+                        onClick={() => this.props.panel()} >
+                        <FontAwesomeIcon icon="th-large"/></a>
+                    <a className={this.props.panelView ? "icon" : "selected-icon"} 
+                        onClick={() => this.props.row()}>
+                        <FontAwesomeIcon icon="th-list"/></a>
                 </div>
             </div>
         )

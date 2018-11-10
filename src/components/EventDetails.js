@@ -5,6 +5,7 @@ import Attendees from './Attendees';
 import EventActionButton from './EventActionButton';
 import moment from 'moment';
 import Footer from './Footer';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const EventDetails = (props) => {
 
@@ -23,7 +24,7 @@ const EventDetails = (props) => {
                         <div className="host">{hostName}</div>
                         <div className="action-container">
                             <span>
-                                {event.users.length} of {event.capacity}
+                            <FontAwesomeIcon className="user-icon" icon="user" />{event.users.length} of {event.capacity}
                             </span>
                             <EventActionButton displayEvent={event}/>
                         </div>
