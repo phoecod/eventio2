@@ -8,20 +8,23 @@
 }
 
 .edit-container {
-    margin: $msize 0;
+    margin: $msize $lsize;
     display:flex;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .edit-btn-container {
     display: flex;
     justify-content: space-between;
-    > * {
-        margin: 0 $msize ;
-    }
+    padding: 0 $lsize;
 }
 
-.del-btn {
-    @extend .btn;
-    background: $leavered;
+.del {
+    color: $leavered;
+    font-weight: bold;
+    font-size: 13px;
+    > .icon {
+        padding: 0 $xssize;
+    }
 }

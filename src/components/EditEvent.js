@@ -7,6 +7,7 @@ import RequireAuth from './RequireAuth';
 import Attendees from './Attendees';
 import Header from './Header';
 import {startEditEvent, startDeleteEvent} from '../actions/event';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const EditEvent = class EditEvent extends Component {
     constructor(props) {
@@ -67,7 +68,9 @@ const EditEvent = class EditEvent extends Component {
                 <Header />
                 <div className="edit-btn-container">
                     <button className="sbtn" onClick={this.handleBack}>back</button>
-                    <button className="del-btn" onClick={() => this.handleEventDelete(event)}>DELETE EVENT</button>
+                    <a className="del" onClick={() => this.handleEventDelete(event)}>
+                    <FontAwesomeIcon className="icon" icon="trash-alt"/>
+                    DELETE EVENT</a>
                 </div>
                 <div className="edit-container">
                     <form className="edit-form" onSubmit={this.onSubmit}>

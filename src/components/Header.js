@@ -15,7 +15,7 @@ const Header = class Header extends Component {
     }
 
     render () {
-        const {user} = this.props
+        const {user} = this.props;
         return (
             <div className="header-container">
                 <h1>E.</h1>
@@ -25,9 +25,9 @@ const Header = class Header extends Component {
                     </a>
                 }
                 <div className="left-container">
-                    <div className="circle">{`${user.first_name[0]}${user.last_name[0]}`}</div>
+                    <div className="circle">{user !== null ? `${user.first_name[0]}${user.last_name[0]}` : 'NN'}</div>
                     <select className="signoutSelect">
-                        <option selected>{user.name}</option>
+                        <option selected>{user !== null ? user.name: "None"}</option>
                         <option onClick={() => this.handleSignOut()}>Sign out</option>
                     </select>
                 </div>

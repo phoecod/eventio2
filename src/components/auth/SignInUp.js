@@ -12,7 +12,12 @@ const SignInUp = class SignInUp extends Component {
             signin: true
         }
     }
-
+    componentDidMount () {
+        document.getElementById('root').style = 'background: white;';
+    }
+    componentWillUnmount () {
+        document.getElementById('root').style = '';
+    }
     onSubmit = (e) => {
         e.preventDefault();
         const email = e.target.email.value;
@@ -48,7 +53,7 @@ const SignInUp = class SignInUp extends Component {
         return (
             <div className="signin-page-container">
             <div className="center-container">
-                <img className="image" type="image/png" src="/images/star-wars-poster.jpg"/>
+                <img alt="star wars poster" className="image" type="image/png" src="/images/star-wars-poster.jpg"/>
                 <div className="side-panel">
                     <div className="link-container">
                         <span className="pre-link">{signin ? "Don't have account? " : "Have an account? "}</span>

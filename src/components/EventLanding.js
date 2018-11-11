@@ -6,17 +6,27 @@ import EventItem from './EventItem';
 import Header from './Header';
 import Footer from './Footer';
 import DisplayBar from './DisplayBar';
+import Loader from './Loader';
 
 export const EventLanding = class EventLanding extends Component {
     constructor (props) {
         super(props);
         this.state = {
-            panelView: true
+            panelView: true,
+            loading: false
         }
     }
 
-    componentDidMount = () => {
-        this.props.fetchEvents();
+    async componentDidMount () {
+        this.setState({loading: true});
+        try {
+            this.props.fetchEvents();
+            this.setState({loading: false});
+            
+        } catch {
+
+        }
+        
     }
 
     handlePanelDisplay = () => {
@@ -32,31 +42,34 @@ export const EventLanding = class EventLanding extends Component {
     }
 
     render() {
-        const {panelView} = this.state
+        const {loading} = this.state;
+        const {panelView} = this.state;
+        console.log(loading)
+        if (loading) {
+            return <Loader />
+        }
         return (
-            <div className="app-margin">
-                <div className="colFlex">
-                    <Header signOut={this.handleSignOut}/>
-                    <DisplayBar
-                        panelView={panelView}
-                        panel={this.handlePanelDisplay}
-                        row={this.handleRowDisplay}
-                    />
-                    <div className="content-container">
-                        <div className={panelView ?"events-panel-container" : "events-row-container" }>
-                        {
-                            this.props.events.map((event) => {
-                                return <EventItem 
-                                panelView={panelView} 
-                                key={event._id} 
-                                history={this.props.history} 
-                                event={event}/>
-                            })
-                        }
-                        </div>
-                        <Footer />
-                    </div> 
-                </div>
+            <div className="colFlex">
+                <Header signOut={this.handleSignOut}/>
+                <DisplayBar
+                    panelView={panelView}
+                    panel={this.handlePanelDisplay}
+                    row={this.handleRowDisplay}
+                />
+                <div className="content-container">
+                    <div className={panelView ?"events-panel-container" : "events-row-container" }>
+                    {
+                        this.props.events.map((event) => {
+                            return <EventItem 
+                            panelView={panelView} 
+                            key={event._id} 
+                            history={this.props.history} 
+                            event={event}/>
+                        })
+                    }
+                    </div>
+                    <Footer />
+                </div> 
             </div>
         )
     }

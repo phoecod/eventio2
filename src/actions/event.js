@@ -3,12 +3,13 @@ import {setError} from './error';
 import {appHistory} from '../routers/router';
 
 export const fetchEvents = () => {
-    return (dispatch) => {
+    return  dispatch => {
         try {
-            const response = axios.get('http://localhost:3090/events');
-            response.then((event) => {
-                dispatch(setEvent(event.data));
+            axios.get('http://localhost:3090/events')
+            .then((response) => {
+                return dispatch(setEvent(response.data));
             });
+                      
         } catch (e) {
             return e;
         }

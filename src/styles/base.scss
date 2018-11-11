@@ -8,7 +8,7 @@ $panelwidth: 265px;
 
 $attendeheight: 175px;
 $attendewidth:300px;
-$detailpanelwidth: 700px;
+$detailpanelwidth: 630px;
 
 $greenblue: #22D486;
 $darkgrey: #7f7e7e;
@@ -16,10 +16,6 @@ $lightgrey: #D9DCE1;
 $darkblue: #323C46;
 $shadowgrey: #F9F9FB;
 $leavered: #FF4081;
-
-.app-margin {
-    margin: 0 $msize;
-}
 
 .colFlex {
     display: flex;
@@ -73,6 +69,7 @@ $leavered: #FF4081;
 #root {
     background: $shadowgrey;
     min-height: 95vh;
+    padding: 0 $msize;
 }
 
 .shadow {
