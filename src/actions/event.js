@@ -5,9 +5,9 @@ import {appHistory} from '../routers/router';
 export const fetchEvents = () => {
     return  dispatch => {
         try {
-            axios.get('http://localhost:3090/events')
+            return  axios.get('http://localhost:3090/events')
             .then((response) => {
-                return dispatch(setEvent(response.data));
+                dispatch(setEvent(response.data));
             });
                       
         } catch (e) {

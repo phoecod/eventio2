@@ -13,18 +13,17 @@ export const EventLanding = class EventLanding extends Component {
         super(props);
         this.state = {
             panelView: true,
-            loading: false
+            loading: true
         }
     }
 
     async componentDidMount () {
-        this.setState({loading: true});
         try {
-            this.props.fetchEvents();
-            this.setState({loading: false});
-            
-        } catch {
-
+            this.props.fetchEvents().then(() => {
+                this.setState({loading: false});
+            });
+        } catch (e) {
+            console.log(e)
         }
         
     }
@@ -44,10 +43,6 @@ export const EventLanding = class EventLanding extends Component {
     render() {
         const {loading} = this.state;
         const {panelView} = this.state;
-        console.log(loading)
-        if (loading) {
-            return <Loader />
-        }
         return (
             <div className="colFlex">
                 <Header signOut={this.handleSignOut}/>
@@ -59,6 +54,7 @@ export const EventLanding = class EventLanding extends Component {
                 <div className="content-container">
                     <div className={panelView ?"events-panel-container" : "events-row-container" }>
                     {
+                     loading ? <Loader /> :     
                         this.props.events.map((event) => {
                             return <EventItem 
                             panelView={panelView} 
