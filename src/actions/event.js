@@ -19,8 +19,8 @@ export const fetchEvents = () => {
 export const fetchEventsWithDate = (date,futureEvent) => {
     return (dispatch) => {
         try {
-            const response = axios.post('http://localhost:3090/events/date',{date, greater: futureEvent});
-            response.then((event) => {
+            return axios.post('http://localhost:3090/events/date',{date, greater: futureEvent})
+            .then((event) => {
                 dispatch(setEvent(event.data));
             });
         } catch (e) {

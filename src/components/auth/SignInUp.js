@@ -9,7 +9,10 @@ const SignInUp = class SignInUp extends Component {
     constructor(props) {
         super(props);
         this.state ={
-            signin: true
+            signin: true,
+            firstName: null,
+            lastName: null,
+            email: null
         }
     }
     componentDidMount () {
@@ -62,7 +65,7 @@ const SignInUp = class SignInUp extends Component {
                     <div className="form-container">
                         <form className="form" onSubmit={this.onSubmit}>
                         {this.props.errorMsg}
-                            {this.state.signin  ?  <SigninContent></SigninContent> : <SignupContent></SignupContent> }
+                            {signin  ?  <SigninContent signin={signin}></SigninContent> : <SignupContent signin={signin}></SignupContent> }
                         </form>
                     </div>
                     

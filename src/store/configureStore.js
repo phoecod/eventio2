@@ -11,16 +11,16 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export const DEFAULT_STATE = {
 	auth: localStorage.getItem('token'),
 	user: JSON.parse(localStorage.getItem('user')),
-	errorMsg: null,
+	errors: null,
 	events: []
 }
 
 export default createStore (
 	combineReducers ({
-	auth: authReducer,
-	user: userIdReducer,
-	errorMsg: errorReducer,
-	events: eventReducer
+		auth: authReducer,
+		user: userIdReducer,
+		errors: errorReducer,
+		events: eventReducer
 	}),
 	composeEnhancers(applyMiddleware(thunk))
 );

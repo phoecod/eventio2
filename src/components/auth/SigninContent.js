@@ -1,12 +1,10 @@
 import React, {Fragment} from 'react';
+import FormTitleBlock from './FormTitleBlock';
 
-const SigninContent = () => {
+const SigninContent = (props) => {
     return (
         <Fragment >
-            <div  className="title-block">
-                <h2 className="title">Sign in to Eventio</h2>
-                <h4 className="subtitle">details below</h4>
-            </div>
+            <FormTitleBlock signin={props.signin}/>
                 <input
                     className="input"
                     name="email"
