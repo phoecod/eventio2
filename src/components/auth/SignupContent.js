@@ -1,28 +1,32 @@
 import React, {Fragment} from 'react';
 import FormTitleBlock from './FormTitleBlock';
 
-const SignupContent = (props) => {
+const SignupContent = ({state, signin}) => {
     return (
         <Fragment >
-            <FormTitleBlock signin={props.signin}/>
+            <FormTitleBlock signin={signin}/>
+            <div className="error">{state.firstNameErr}</div>
             <input
                 className="input"
                 name="firstName"
                 type="text"
                 placeholder="First Name"
             />
+            <div className="error">{state.lastNameErr}</div>
             <input
                 className="input"
                 name="lastName"
                 type="text"
                 placeholder="Last Name"
             />
+            <div className="error">{state.emailErr}</div>
             <input
                 className="input"
                 name="email"
                 autoComplete="none"
                 placeholder="Email"
             />
+            <div className="error">{state.passwordErr}</div>
             <input
                 className="input"
                 name="password"

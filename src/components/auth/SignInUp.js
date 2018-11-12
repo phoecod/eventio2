@@ -4,17 +4,20 @@ import SignupContent from './SignupContent';
 import {connect} from 'react-redux';
 import {startSignUp, startSignIn} from '../../actions/auth';
 import {removeError} from '../../actions/error';
+import {validateSignIn, validateSignUp} from '../../services/validateForm';
 
 const SignInUp = class SignInUp extends Component {
     constructor(props) {
         super(props);
         this.state ={
             signin: true,
-            firstName: null,
-            lastName: null,
-            email: null
+            firstNameErr: null,
+            lastNameErr: null,
+            emailErr: null,
+            passwordErr: null
         }
     }
+
     componentDidMount () {
         document.getElementById('root').style = 'background: white;';
     }
@@ -30,19 +33,46 @@ const SignInUp = class SignInUp extends Component {
             password
         }
         if (!this.state.signin) {
-            const firstName = e.target.firstName.value;
-            const lastName = e.target.lastName.value;
-            formProps['firstName'] = firstName;
-            formProps['lastName'] = lastName;
-            this.props.startSignUp(formProps, () => {
-                this.props.history.push('/');
-            });
+            const firstName = e.target.firstName.value.trim();
+            const lastName = e.target.lastName.value.trim();
+            formProps['firstName'] = firstName.trim();
+            formProps['lastName'] = lastName.trim();
+            const signUpValidation = validateSignUp(formProps);
+            if (signUpValidation === true) {
+                this.props.startSignUp(formProps, () => {
+                    this.props.history.push('/');
+                });
+            } else {
+                if (signUpValidation.password !== undefined) this.setState({passwordErr: signUpValidation.password});
+                if (signUpValidation.email !== undefined) this.setState({emailErr: signUpValidation.email});
+                if (signUpValidation.firstName !== undefined) this.setState({firstNameErr: signUpValidation.firstName});
+                if (signUpValidation.lastName !== undefined) this.setState({lastNameErr: signUpValidation.lastName});
+                this.setErrorTimeOut();
+            }
+            
         } else {
-            this.props.startSignIn(formProps, () => {
-                this.props.history.push('/');
-            });
+            const signInValid = validateSignIn(formProps);
+            if (signInValid === true) {
+                this.props.startSignIn(formProps, () => {
+                    this.props.history.push('/');
+                });
+            } else {
+                if (signInValid.password !== undefined) this.setState({passwordErr: signInValid.password});
+                if (signInValid.email !== undefined) this.setState({emailErr: signInValid.email});
+                this.setErrorTimeOut();
+            }
         }
     }
+
+    setErrorTimeOut = () => {
+        setTimeout(() => { this.setState({
+            firstNameErr: null,
+            lastNameErr: null,
+            emailErr: null,
+            passwordErr: null}
+        )}, 5000);
+    }
+
     handleSignInOrUp = () => {
         this.props.removeError();
         this.setState((prevState) => {
@@ -51,6 +81,7 @@ const SignInUp = class SignInUp extends Component {
             }
         });
     }
+
     render () {
         const {signin} = this.state; 
         return (
@@ -65,7 +96,17 @@ const SignInUp = class SignInUp extends Component {
                     <div className="form-container">
                         <form className="form" onSubmit={this.onSubmit}>
                         {this.props.errorMsg}
-                            {signin  ?  <SigninContent signin={signin}></SigninContent> : <SignupContent signin={signin}></SignupContent> }
+                            {
+                            signin  ?  <SigninContent 
+                                            state={this.state}
+                                            handleEmail={this.handleEmail}
+                                            signin={signin}></SigninContent> 
+                                        : 
+                                        <SignupContent
+                                            state={this.state} 
+                                            handleEmail={this.handleEmail}
+                                            signin={signin}></SignupContent> 
+                            }
                         </form>
                     </div>
                     

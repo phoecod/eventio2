@@ -8,6 +8,12 @@
     height: 97vh;
 }
 
+.error {
+    color: $leavered;
+    margin: $ssize 0;
+    font-size: 13px;
+    font-weight: bold;
+}
 
 .center-container {
     display: flex;
