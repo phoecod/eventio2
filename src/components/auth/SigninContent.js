@@ -6,6 +6,7 @@ const SigninContent = (props) => {
     return (
         <Fragment >
             <FormTitleBlock signin={props.signin}/>
+            <div className="error">{props.state.authErr}</div>
                 <div className="error">{props.state.emailErr}</div>
                 <input
                     className="input"

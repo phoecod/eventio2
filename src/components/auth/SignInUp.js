@@ -14,7 +14,8 @@ const SignInUp = class SignInUp extends Component {
             firstNameErr: null,
             lastNameErr: null,
             emailErr: null,
-            passwordErr: null
+            passwordErr: null,
+            authErr: null
         }
     }
 
@@ -53,9 +54,13 @@ const SignInUp = class SignInUp extends Component {
         } else {
             const signInValid = validateSignIn(formProps);
             if (signInValid === true) {
-                this.props.startSignIn(formProps, () => {
+                const signInResponse = this.props.startSignIn(formProps, () => {
                     this.props.history.push('/');
                 });
+                signInResponse.then((res) => {
+                    if(res.authErr !== undefined) this.setState({authErr: res.authErr});
+                })
+                
             } else {
                 if (signInValid.password !== undefined) this.setState({passwordErr: signInValid.password});
                 if (signInValid.email !== undefined) this.setState({emailErr: signInValid.email});
@@ -95,7 +100,6 @@ const SignInUp = class SignInUp extends Component {
                     </div>
                     <div className="form-container">
                         <form className="form" onSubmit={this.onSubmit}>
-                        {this.props.errorMsg}
                             {
                             signin  ?  <SigninContent 
                                             state={this.state}
@@ -103,6 +107,7 @@ const SignInUp = class SignInUp extends Component {
                                             signin={signin}></SigninContent> 
                                         : 
                                         <SignupContent
+                                            authErr={this.props.errorMsg}
                                             state={this.state} 
                                             handleEmail={this.handleEmail}
                                             signin={signin}></SignupContent> 
@@ -126,7 +131,7 @@ const mapDispatchToProps = ((dispatch) => ({
 );
 const stateToProps = (state) => {
 	return {
-        errorMsg: state.errorMsg,
+        errorMsg: state.errors,
         auth: state.auth
 	}
 }

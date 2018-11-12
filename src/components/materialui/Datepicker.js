@@ -32,6 +32,7 @@ const DatePickers = class DatePickers extends PureComponent {
           label="Date"
           type="date"
           name="date"
+          required={true}
           defaultValue={selectedDate}
           className={classes.textField}
           InputLabelProps={{

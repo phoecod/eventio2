@@ -24,6 +24,7 @@ function TimePickers(props) {
         label="Time"
         type="time"
         name="time"
+        required={true}
         defaultValue={props.eventTime}
         className={classes.textField}
         InputLabelProps={{

@@ -9,7 +9,6 @@ export const startSignUp = (formProps, callback) => async dispatch => {
         const response = await axios.post('http://localhost:3090/signup', formProps);
         const jwt = response.data.token;
         const resUser = response.data.user;
-        console.log(resUser);
         dispatch(setAuthToken(jwt));
         dispatch(setUser(resUser));
         localStorage.setItem("token", jwt);
@@ -22,7 +21,6 @@ export const startSignUp = (formProps, callback) => async dispatch => {
 }
 
 export const startSignIn = (formProps, callback) => async dispatch => {
-    console.log(formProps)
     //db call
     try {
         const response = await axios.post('http://localhost:3090/signin', formProps);
@@ -35,7 +33,7 @@ export const startSignIn = (formProps, callback) => async dispatch => {
         callback();
     } catch(e) {
         console.log(e);
-        dispatch(setError('This password/username combination is invalid!'));
+       return {authErr: 'This password/username combination is invalid!'};
     }
 }
 

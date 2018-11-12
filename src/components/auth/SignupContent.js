@@ -1,10 +1,11 @@
 import React, {Fragment} from 'react';
 import FormTitleBlock from './FormTitleBlock';
 
-const SignupContent = ({state, signin}) => {
+const SignupContent = ({state, signin, authErr}) => {
     return (
         <Fragment >
             <FormTitleBlock signin={signin}/>
+            <div className="error">{authErr}</div>
             <div className="error">{state.firstNameErr}</div>
             <input
                 className="input"
