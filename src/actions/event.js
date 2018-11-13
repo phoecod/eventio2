@@ -5,7 +5,7 @@ import {appHistory} from '../routers/router';
 export const fetchEvents = () => {
     return  dispatch => {
         try {
-            return  axios.get('http://localhost:3090/events')
+            return  axios.get('https://eventioserver.herokuapp/events')
             .then((response) => {
                 dispatch(setEvent(response.data));
             });
