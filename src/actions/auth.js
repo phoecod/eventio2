@@ -6,7 +6,7 @@ export const startSignUp = (formProps, callback) => async dispatch => {
 
     //db call
     try {
-        const response = await axios.post('http://localhost:3090/signup', formProps);
+        const response = await axios.post('https://eventioserver.herokuapp/signup', formProps);
         const jwt = response.data.token;
         const resUser = response.data.user;
         dispatch(setAuthToken(jwt));
@@ -23,7 +23,7 @@ export const startSignUp = (formProps, callback) => async dispatch => {
 export const startSignIn = (formProps, callback) => async dispatch => {
     //db call
     try {
-        const response = await axios.post('http://localhost:3090/signin', formProps);
+        const response = await axios.post('https://eventioserver.herokuapp/signin', formProps);
         const jwt = response.data.token;
         const resUser = response.data.user;
         dispatch(setAuthToken(jwt));

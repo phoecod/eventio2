@@ -19,7 +19,7 @@ export const fetchEvents = () => {
 export const fetchEventsWithDate = (date,futureEvent) => {
     return (dispatch) => {
         try {
-            return axios.post('http://localhost:3090/events/date',{date, greater: futureEvent})
+            return axios.post('https://eventioserver.herokuapp/events/date',{date, greater: futureEvent})
             .then((event) => {
                 dispatch(setEvent(event.data));
             });
@@ -31,7 +31,7 @@ export const fetchEventsWithDate = (date,futureEvent) => {
 
 export const startAddEvent = (event) => {
     return (dispatch) => {
-        axios.post('http://localhost:3090/event', event)
+        axios.post('https://eventioserver.herokuapp/event', event)
         .then((response) => {
             dispatch(addEvent(response.data));
             appHistory.goBack();
@@ -44,7 +44,7 @@ export const startAddEvent = (event) => {
 
 export const startEditEvent = (event) => {
     return (dispatch) => {
-        axios.put('http://localhost:3090/event', event)
+        axios.put('https://eventioserver.herokuapp/event', event)
         .then((response) => {
             const modifiedEvent = response.data;
             dispatch(editEvent(modifiedEvent));
