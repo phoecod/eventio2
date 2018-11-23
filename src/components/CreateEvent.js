@@ -25,11 +25,12 @@ const CreateEvent = class CreateEvent extends Component {
         const description = e.target.description.value.trim();
         const date = e.target.date.value.trim();
         const time = e.target.time.value.trim();
+        const startsAt = moment(date + " " + time, 'YYYY/MM/DD HH:mm').toISOString();
         const capacity = e.target.capacity.value.trim();
-        const event = {title, description, date, time, capacity, user: this.props.user};
+        const event = {title, description, startsAt, capacity};
         const eventValid = validateEvent(event);
         if (eventValid === true) {
-            this.props.startAddEvent(event);
+            this.props.startAddEvent(event, this.props.auth);
         } else {
             if (eventValid.title !== undefined) this.setState({titleErr: eventValid.title});
             if (eventValid.description !== undefined) this.setState({descriptionErr: eventValid.description});
@@ -73,9 +74,10 @@ const CreateEvent = class CreateEvent extends Component {
 }
 
 const mapDispatchToProps = (dispatch) => ({
-    startAddEvent: (event) => dispatch(startAddEvent(event))
+    startAddEvent: (event, auth) => dispatch(startAddEvent(event, auth))
 });
 const mapStateToProps = (state) => ({
-    user: state.user
+    user: state.user,
+    auth: state.auth
 });
 export default RequireAuth(connect(mapStateToProps, mapDispatchToProps)(CreateEvent));

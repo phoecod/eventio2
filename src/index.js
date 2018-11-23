@@ -5,6 +5,9 @@ import store from './store/configureStore';
 import AppRouter from './routers/router';
 import './styles/styles.scss';
 import './faLibrary';
+import interceptor from './api/interceptors';
+
+interceptor.setupIntercept();
 
 ReactDOM.render(
     <Provider store={store}>

@@ -11,7 +11,7 @@ const EventDetails = (props) => {
 
     const {event} = props.location.state;
 
-    const hostName = event.host.length > 0 ?  event.host.first_name.length + " " + event.host.last_name : "None";
+    const hostName = event.owner.length > 0 ?  event.owner.firsName.length + " " + event.onwer.lastName : "None";
     return (
         <Fragment>
             <Header />
@@ -24,12 +24,12 @@ const EventDetails = (props) => {
                         <div className="host">{hostName}</div>
                         <div className="action-container">
                             <span>
-                            <FontAwesomeIcon className="user-icon" icon="user" />{event.users.length} of {event.capacity}
+                            <FontAwesomeIcon className="user-icon" icon="user" />{event.attendees.length} of {event.capacity}
                             </span>
                             <EventActionButton displayEvent={event}/>
                         </div>
                     </div>
-                    <Attendees attendees={event.users}/>
+                    <Attendees attendees={event.attendees}/>
                 </div>
                 <Footer />
             </div>

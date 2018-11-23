@@ -6,10 +6,10 @@ const Attendees = (props) => {
             <h3 className="title">Attendees</h3>
             <div className="attendee-container">
             {
-                props.attendees.map((attendee, ind) => {
+                props.attendees.map((attendee) => {
                     return <div className="user-circle" 
                     key={attendee._id}>
-                        {`${attendee.first_name}  ${attendee.last_name}` }
+                        {`${attendee.firstName}  ${attendee.lastName}` }
                     </div>
                 })
             }

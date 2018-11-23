@@ -1,13 +1,15 @@
 import axios from 'axios';
 import {setError} from './error';
 import {appHistory} from '../routers/router';
+import {fetchEventsApi, addEventsApi, deleteEventsApi} from '../api/eventAPI';
 
 export const fetchEvents = () => {
     return  dispatch => {
         try {
-            return  axios.get('https://eventioserver.herokuapp/events')
-            .then((response) => {
-                dispatch(setEvent(response.data));
+            fetchEventsApi()
+            .then((res) => {
+                console.log(res.data);
+                return dispatch(setEvent(res.data));
             });
                       
         } catch (e) {
@@ -29,14 +31,17 @@ export const fetchEventsWithDate = (date,futureEvent) => {
     }
 }
 
-export const startAddEvent = (event) => {
+export const startAddEvent = (event, auth) => {
     return (dispatch) => {
-        axios.post('https://eventioserver.herokuapp/event', event)
+        console.log(event)
+        addEventsApi(event, auth)
         .then((response) => {
+            console.log(response.data)
             dispatch(addEvent(response.data));
             appHistory.goBack();
         })
         .catch(function (error) {
+            console.log(error);
             dispatch(setError("Event error"));
         });
     }
@@ -53,10 +58,11 @@ export const startEditEvent = (event) => {
     }
 }
 
-export const startDeleteEvent = (event) => {
+export const startDeleteEvent = (eventId, auth) => {
     return (dispatch) => {
-        axios.post('http://localhost:3090/event/delete', event)
+        deleteEventsApi(eventId, auth)
         .then((response) => {
+            console.log(response);
             dispatch(deleteEvent(response.eventId));
             appHistory.goBack();
         });

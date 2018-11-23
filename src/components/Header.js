@@ -25,9 +25,9 @@ const Header = class Header extends Component {
                     </a>
                 }
                 <div className="left-container">
-                    <div className="circle">{user !== null ? `${user.first_name[0]}${user.last_name[0]}` : 'NN'}</div>
+                    <div className="circle">{user !== null ? `${user.firstName[0]}${user.lastName[0]}` : 'NN'}</div>
                     <select className="signoutSelect">
-                        <option selected>{user !== null ? user.name: "None"}</option>
+                        <option selected>{user !== null ? user.firstName + " " + user.lastName : "None"}</option>
                         <option onClick={() => this.handleSignOut()}>Sign out</option>
                     </select>
                 </div>

@@ -14,7 +14,7 @@ export const EventItem = (props) => {
         });
     }
     const date = moment(event.date,"YYYY-MM-DD hh:mm A").format("MMM D, YYYY - hh:mm A");
-    const hostName = event.host !== undefined ?  event.host.first_name + " " + event.host.last_name : "None";
+    const hostName = event.owner !== undefined ?  event.owner.firstName + " " + event.owner.lastName : "None";
     return (
         <div key={props.key} className={props.panelView ? "event-panel" : "event-row"}>
             <div className="clickable" onClick={() => handleDetailView()}>
@@ -24,7 +24,7 @@ export const EventItem = (props) => {
                 <p className="description">{event.description}</p>
             </div>
             <div className="action-container">
-                <div className="users"><FontAwesomeIcon icon="user" />{`${event.users.length} of ${event.capacity}`}</div>
+                <div className="users"><FontAwesomeIcon icon="user" />{`${event.attendees.length} of ${event.capacity}`}</div>
                 <EventActionButton displayEvent={event}/>
             </div>
         </div>

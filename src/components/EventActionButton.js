@@ -40,10 +40,10 @@ const EventActionButton = class EventActionButton extends Component {
 
     componentDidMount = () => {
         const event = this.props.displayEvent;
-        if (event.host._id === this.props.userId)  {
+        if (event.owner._id === this.props.userId)  {
             this.setState({ edit: true});
         } else {
-            event.users.map((user) => {
+            event.attendees.map((user) => {
                 if (user._id === this.props.userId) {
                    return this.setState({joined: true});
                 } else {

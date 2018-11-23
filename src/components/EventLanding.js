@@ -14,7 +14,7 @@ export const EventLanding = class EventLanding extends Component {
         super(props);
         this.state = {
             panelView: true,
-            isLoading: true,
+            isLoading: false,
             allEvent: true,
             futureEvent: false
         }

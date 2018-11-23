@@ -23,8 +23,8 @@ const EditEvent = class EditEvent extends Component {
         this.props.history.goBack();
     }
 
-    handleEventDelete = (event) => {
-        this.props.startDeleteEvent(event);
+    handleEventDelete = (eventId) => {
+        this.props.startDeleteEvent(eventId, this.props.auth);
     }
 
     handleTitle = (e) => {
@@ -68,7 +68,7 @@ const EditEvent = class EditEvent extends Component {
                 <Header />
                 <div className="edit-btn-container">
                     <button className="sbtn" onClick={this.handleBack}>back</button>
-                    <a className="del" onClick={() => this.handleEventDelete(event)}>
+                    <a className="del" onClick={() => this.handleEventDelete(event._id)}>
                     <FontAwesomeIcon className="icon" icon="trash-alt"/>
                     DELETE EVENT</a>
                 </div>
@@ -81,7 +81,7 @@ const EditEvent = class EditEvent extends Component {
                         <DatePicker name="date" eventDate={eventDate} disablePast={true} />
                         <button className="btn">Save</button>
                     </form>
-                    <Attendees attendees={event.users}/>
+                    <Attendees attendees={event.attendees}/>
                 </div>
                 
             </div>
@@ -90,8 +90,12 @@ const EditEvent = class EditEvent extends Component {
 }
 
 const mapDispatchToProps = ((dispatch) => ({
-    startDeleteEvent: (event) => dispatch(startDeleteEvent(event)),
+    startDeleteEvent: (event, auth) => dispatch(startDeleteEvent(event,)),
     startEditEvent: (editedEvent) => dispatch(startEditEvent(editedEvent))
 }));
 
-export default RequireAuth(connect(undefined, mapDispatchToProps)(EditEvent));
+const mapStateToProps = ((state) => ({
+    auth: state.auth
+}));
+
+export default RequireAuth(connect(mapStateToProps, mapDispatchToProps)(EditEvent));
